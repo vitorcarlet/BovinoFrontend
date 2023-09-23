@@ -1,0 +1,28 @@
+.animal-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Descomente esta linha se quiser alinhar os elementos horizontalmente */
+  }
+  
+
+  app-animal-card {
+    float: left; /* Note que float não é necessário quando você está usando flexbox */
+    width: 50%;
+    margin-bottom: 16px;
+    padding: 5px 8px; /* Adicione "px" após os números */
+  }
+
+  /*------------ For small screens------------*/
+
+@media only screen and (max-width: 768px){
+
+    app-animal-card {
+        float: left; /* Note que float não é necessário quando você está usando flexbox */
+        width: 100%;
+        margin-bottom: 16px;
+        padding: 5px 8px; /* Adicione "px" após os números */
+      }
+
+}
+

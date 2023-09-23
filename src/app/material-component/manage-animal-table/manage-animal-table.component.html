@@ -1,0 +1,12 @@
+
+
+<div class="animal-list">
+  
+    <app-animal-card
+      *ngFor="let animal of animalService.animals; index as i"
+      [animal]="animal"
+      [numero]="i + 1"
+    ></app-animal-card>
+      
+    
+  </div>

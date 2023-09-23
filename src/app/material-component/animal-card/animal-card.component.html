@@ -1,0 +1,10 @@
+<div class="animal-card">
+    <img src="../../../assets/img/boi.png">
+    <p>name/id: {{animal?.name}}</p>
+    <p>race: {{animal?.race}}</p>
+    <p>weight: {{animal?.actualWeight}}</p>
+    <p>months: {{converterDataEmIdadeEmMeses()}}</p>
+    <button mat-flat-button color="primary" class="float-right" (click)="handleAddAction()">
+        <mat-icon>edit</mat-icon> Edit Animal
+    </button> 
+</div>
