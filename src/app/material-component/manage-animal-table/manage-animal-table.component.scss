@@ -15,7 +15,7 @@
 
   /*------------ For small screens------------*/
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 1000px){
 
     app-animal-card {
         float: left; /* Note que float não é necessário quando você está usando flexbox */

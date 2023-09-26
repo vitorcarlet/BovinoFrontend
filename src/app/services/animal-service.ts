@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -26,4 +26,28 @@ export class AnimalService {
       console.error('Erro ao buscar animais:', error);
     }
   }
+
+  async deleteAnimal(animal:any){
+    const dataJson = {  
+      "name": animal.name,
+      "race": animal.race,
+      "birth": animal.birth,
+      "actualWeight": animal.actualWeight,
+      "ownerId": animal.ownerId
+  };
+
+  console.log(dataJson);
+
+    return this.httpClient.post(this.url + "/animal/remove", dataJson, {
+      headers: new HttpHeaders().set('Content-type','application/json')
+    });
+  }
+
+   update(data:any){
+    return this.httpClient.post(this.url +
+      "animal/update",data,{
+        headers:new HttpHeaders().set('Content-Type',"application/json")
+      })
+  }
+
 }

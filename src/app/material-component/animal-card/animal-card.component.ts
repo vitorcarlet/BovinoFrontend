@@ -5,6 +5,10 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogAnimalCardComponent } from '../dialog/dialog-animal-card/dialog-animal-card.component';
+import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
+import { AnimalService } from 'src/app/services/animal-service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 
 @Component({
   selector: 'app-animal-card',
@@ -21,7 +25,10 @@ export class AnimalCardComponent {
   responseMessage:any;
 
   constructor(private dialog:MatDialog,
-    private router:Router){
+    private router:Router,
+    private animalService:AnimalService,
+    private ngxService:NgxUiLoaderService,
+    private snackbarService:SnackbarService){
 
   }
 
@@ -60,4 +67,53 @@ export class AnimalCardComponent {
       });
   
     }
+
+    handleDeleteAction(values:any){
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {
+        message: 'delete '+values.name+' ',
+        confirmation:true
+      }
+      const dialogRef = this.dialog.open(ConfirmationComponent,dialogConfig);
+      const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((response)=>{
+        this.ngxService.start();
+        this.deleteProduct(values);
+        dialogRef.close();
+      })
+    }
+
+    async deleteProduct(animal:any){
+       (await this.animalService.deleteAnimal(animal)).subscribe((response:any)=>{
+        this.ngxService.stop();
+        //this.tableData();
+        this.responseMessage = response?.message;
+        this.snackbarService.openSnackBar(this.responseMessage,"success");
+        location.reload();
+      },(error:any)=>{
+        this.ngxService.stop();
+        console.log(error.error?.message);
+        if(error.error?.message){
+          this.responseMessage = error.error?.message;
+        }else{
+          this.responseMessage = GlobalConstants.genericError;
+          this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error);
+        }
+      })
+    }
+
+    handleEditAction(values:any){
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {
+        action: 'Edit',
+        data:values
+      };
+      dialogConfig.width = "850px";
+      const dialogRef = this.dialog.open(DialogAnimalCardComponent,dialogConfig);
+      this.router.events.subscribe(()=>{
+        dialogRef.close();
+  
+      });
+  
+    }
+  
 }

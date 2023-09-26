@@ -1,10 +1,21 @@
 <div class="animal-card">
     <img src="../../../assets/img/boi.png">
-    <p>name/id: {{animal?.name}}</p>
-    <p>race: {{animal?.race}}</p>
-    <p>weight: {{animal?.actualWeight}}</p>
-    <p>months: {{converterDataEmIdadeEmMeses()}}</p>
-    <button mat-flat-button color="primary" class="float-right" (click)="handleAddAction()">
-        <mat-icon>edit</mat-icon> Edit Animal
-    </button> 
+    <p>nome/id: {{animal?.name}}</p>
+    <p>raça: {{animal?.race}}</p>
+    <p>peso: {{animal?.actualWeight}}</p>
+    <p>idade: {{converterDataEmIdadeEmMeses()}} meses.</p>
+    <div class="button-container">
+        <button  mat-flat-button color="warn" class="button-icon button-text" (click)="handleDeleteAction(animal)">
+            <mat-icon>edit</mat-icon> Deletar 
+        </button> 
+        <button  mat-flat-button color="primary" class="button-icon button-text " (click)="handleAddAction()">
+            <mat-icon>edit</mat-icon>  Evolução
+        </button> 
+        <button  mat-flat-button color="primary" class="button-icon button-text  " (click)="handleEditAction(animal)">
+            <mat-icon>edit</mat-icon> Editar
+        </button> 
+   </div>
+    <!--<button class="centered-button" mat-flat-button color="warn" matTooltip="Delete" (click)="handleDeleteAction(animal?.name)">
+        <mat-icon>delete</mat-icon>
+    </button>-->
 </div>
