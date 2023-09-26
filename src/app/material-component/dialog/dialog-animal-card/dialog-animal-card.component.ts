@@ -33,12 +33,18 @@ export class DialogAnimalCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.animalForm = this.formBuilder.group({
+      id: [''],
       name:[null,[Validators.required]],
         race: [null, [Validators.required]],
-      birth: [null, [Validators.required]],
-      actualWeight: [null, Validators.required],
-      ownerId: [null, Validators.required],
+        birthday: [null, [Validators.required]],
+      actualWeight: [null, [Validators.required]],
+      ownerIdId: ['']
     });
+    if (this.dialogData.action === 'Edit') {
+      this.dialogAction = "Edit";
+      this.action = "Update";
+      this.animalForm.patchValue(this.dialogData.data);
+    }
   }
 
   handleSubmit(){
@@ -53,18 +59,22 @@ export class DialogAnimalCardComponent implements OnInit {
   edit(){
     var formData = this.animalForm.value;
     var data = {
+      id: String(formData.id),
       name:formData.name,
-      race: formData.ra,
-      birth: formData.birth,
+      race: formData.race,
+      birth: formData.birthday,
       actualWeight: formData.actualWeight,
-      ownerId: formData.ownerId,
+      ownerId: String(formData.ownerIdId),
     };
+
+    console.log(data);
 
      this.animalService.update(data).subscribe((response:any)=>{
       this.dialogRef.close();
-      this.onAddCategory.emit();
+      //this.onAddCategory.emit();
       this.responseMessage = response.message;
       this.snackbarService.openSnackBar(this.responseMessage,"success");
+      location.reload();
 
     },(error:any)=>{
       this.dialogRef.close()

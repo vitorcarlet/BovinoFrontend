@@ -6,9 +6,9 @@
     <p>idade: {{converterDataEmIdadeEmMeses()}} meses.</p>
     <div class="button-container">
         <button  mat-flat-button color="warn" class="button-icon button-text" (click)="handleDeleteAction(animal)">
-            <mat-icon>edit</mat-icon> Deletar 
+            <mat-icon>remove</mat-icon> Deletar 
         </button> 
-        <button  mat-flat-button color="primary" class="button-icon button-text " (click)="handleAddAction()">
+        <button  mat-flat-button color="primary" class="button-icon button-text " (click)="handleEvolutionAction(animal)">
             <mat-icon>edit</mat-icon>  Evolução
         </button> 
         <button  mat-flat-button color="primary" class="button-icon button-text  " (click)="handleEditAction(animal)">
@@ -19,3 +19,4 @@
         <mat-icon>delete</mat-icon>
     </button>-->
 </div>
+

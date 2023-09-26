@@ -23,6 +23,14 @@ const MENUITEMS = [
     icon: 'pets',
     role: '',
   },
+  {
+    state:'animalEvolution',
+    name: 'Manage Animal Evolution',
+    type: 'link',
+    icon: 'pets',
+    role: ''
+  },
+
 
   {
     state: 'dashboard',
@@ -59,13 +67,7 @@ const MENUITEMS = [
     icon: 'backup_table',
     role: '',
   },
-  {
-    state: 'user',
-    name: 'Manage User',
-    type: 'link',
-    icon: 'people',
-    role: 'admin',
-  },
+
   
   {
     state: 'user',
@@ -74,6 +76,7 @@ const MENUITEMS = [
     icon: 'people',
     role: 'admin',
   },
+  
 ];
 
 @Injectable()

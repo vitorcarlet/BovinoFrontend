@@ -1,0 +1,84 @@
+.animal-card {
+    font-family: "Verdana", sans-serif;
+    background: #f2f2f2;
+    position: relative;
+    border: 1px solid #c5c5c5;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+    border-color: rgba(223, 225, 229, 0);
+    border-top: 6px solid #2e7d32;
+    border-bottom: 6px solid #2e7d32;
+    text-align: center; /* Centralizar conteúdo horizontalmente */
+  }
+  
+  img {
+    width: 200px;
+    margin: 0 auto; /* Centralizar a imagem horizontalmente */
+    display: block; /* Para alinhar verticalmente em relação ao conteúdo ao redor */
+  }
+
+  /*.centered-button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;  Ajuste o padding conforme necessário 
+  }*/
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espaço entre os botões */
+}
+
+.button-icon {
+  
+    padding: 10px; /* Espaçamento interno dos botões */
+    font-size: 14px; /* Tamanho do ícone */
+    display: flex;
+    align-items: center; /* Centralizar verticalmente o ícone */
+   
+}
+
+.float-right{
+  float: right;
+}
+
+mat-card{
+  padding:20px;
+}
+
+table{
+  width:100%;
+  padding: 15px;
+    margin: 10px;
+}
+
+/* Mídia Query para telas pequenas */
+@media screen and (max-width: 576px) {
+  .button-container .button-icon {
+      width: 100%; /* Define a largura para 100% */
+      max-width: none; /* Remove a largura máxima, se houver */
+      padding: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-icon {
+      padding: 0; /* Remover espaçamento interno dos botões */
+
+  }
+
+  .button-text {
+    padding: 10px; /* Reduzir o espaçamento interno dos botões */
+}
+
+  .button-icon mat-icon {
+      font-size: 22px; /* Aumentar o tamanho do ícone para telas pequenas */
+  }
+}
+
+
+
+

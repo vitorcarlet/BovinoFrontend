@@ -45,9 +45,9 @@ export class AnimalService {
 
    update(data:any){
     return this.httpClient.post(this.url +
-      "animal/update",data,{
-        headers:new HttpHeaders().set('Content-Type',"application/json")
-      })
+      "/animal/update",data,{
+        headers:new HttpHeaders().set('Content-type',"application/json")
+      });
   }
 
 }

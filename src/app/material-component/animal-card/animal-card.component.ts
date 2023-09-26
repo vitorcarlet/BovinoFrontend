@@ -115,5 +115,11 @@ export class AnimalCardComponent {
       });
   
     }
+
+    handleEvolutionAction(animalObj: any) {
+      this.router.navigate(['/cafe/animalEvolution'], {
+        queryParams: { animalData: JSON.stringify(animalObj) }
+      });
+    }
   
 }

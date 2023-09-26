@@ -24,6 +24,9 @@ import { AnimalTableComponent } from './dialog/animal-table/animal-table.compone
 import { AnimalCardComponent } from './animal-card/animal-card.component';
 import { ManageAnimalTableComponent } from './manage-animal-table/manage-animal-table.component';
 import { DialogAnimalCardComponent } from './dialog/dialog-animal-card/dialog-animal-card.component';
+import { ManageAnimalEvolutionComponent } from './manage-animal-evolution/manage-animal-evolution.component';
+import { YouAreNotAllowedComponent } from './you-are-not-allowed/you-are-not-allowed.component';
+import { AnimalEvolutionComponent } from './dialog/animal-evolution/animal-evolution.component';
 
 @NgModule({
   imports: [
@@ -52,7 +55,10 @@ import { DialogAnimalCardComponent } from './dialog/dialog-animal-card/dialog-an
     AnimalTableComponent,
     AnimalCardComponent,
     ManageAnimalTableComponent,
-    DialogAnimalCardComponent
+    DialogAnimalCardComponent,
+    ManageAnimalEvolutionComponent,
+    YouAreNotAllowedComponent,
+    AnimalEvolutionComponent
   ]
 })
 export class MaterialComponentsModule {}

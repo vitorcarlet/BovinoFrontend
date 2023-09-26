@@ -11,48 +11,60 @@
 <mat-dialog-content class="mat-typograph">
     <form [formGroup]="animalForm">
         <div fxFlex fxLayout="column">
+           
+
             <div fxLayout="row wrap">
+
+            
+                    <mat-form-field appearance="standard" fxFlex>
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" required>
+                        <mat-error *ngIf="animalForm.controls.name.touched && animalForm.controls.name.invalid">
+                            <span *ngIf="animalForm.controls.name.errors.required">This field is mandatory.</span>
+                            <span *ngIf="animalForm.controls.name.errors.pattern">This field is invalid.</span>
+                        </mat-error>
+                    </mat-form-field>
+                
+                
                 <mat-form-field appearance="standard" fxFlex>
-                    <mat-label>Name</mat-label>
-                    <input matInput formControlName="name" required>
-                    <mat-error *ngIf="animalForm.controls.name.touched && animalForm.controls.name.invalid">
-                        <span *ngIf="animalForm.controls.name.errors.required">This field is mandatory.</span>
-                        <span *ngIf="animalForm.controls.name.errors.pattern">This field is invalid.</span>
+                    <mat-label>Race</mat-label>
+                    <input matInput formControlName="race" required>
+                    <mat-error *ngIf="animalForm.controls.race.touched && animalForm.controls.race.invalid">
+                        <span *ngIf="animalForm.controls.race.errors.required">This field is mandatory.</span>
+                        <span *ngIf="animalForm.controls.race.errors.pattern">This field is invalid.</span>
                     </mat-error>
                 </mat-form-field>
+
+                
             </div>
 
             <div fxLayout="row wrap">
-                <mat-form-field appearance="standard" fxFlex>
-                    <mat-label>Price</mat-label>
-                    <input matInput formControlName="price" required>
-                    <mat-error *ngIf="animalForm.controls.price.touched && animalForm.controls.price.invalid">
-                        <span *ngIf="animalForm.controls.price.errors.required">This field is mandatory.</span>
-                        <span *ngIf="animalForm.controls.price.errors.pattern">This field is invalid.</span>
-                    </mat-error>
-                </mat-form-field>
 
+            
                 <mat-form-field appearance="standard" fxFlex>
-                    <mat-label>Category</mat-label>
-                    <mat-label>Price</mat-label>
-                    <input matInput formControlName="price" required>
-                    <mat-error *ngIf="animalForm.controls.price.touched && animalForm.controls.price.invalid">
-                        <span *ngIf="animalForm.controls.price.errors.required">This field is mandatory.</span>
-                        <span *ngIf="animalForm.controls.price.errors.pattern">This field is invalid.</span>
+                    <mat-label>Birthday</mat-label>
+                    <input matInput formControlName="birthday" required>
+                    <mat-error *ngIf="animalForm.controls.birthday.touched && animalForm.controls.birthday.invalid">
+                        <span *ngIf="animalForm.controls.birthday.errors.required">This field is mandatory.</span>
+                        <span *ngIf="animalForm.controls.birthday.errors.pattern">This field is invalid.</span>
                     </mat-error>
                 </mat-form-field>
-            </div>
+            
+            
+            <mat-form-field appearance="standard" fxFlex>
+                <mat-label>Actual Weight</mat-label>
+                <input matInput formControlName="actualWeight" required>
+                <mat-error *ngIf="animalForm.controls.actualWeight.touched && animalForm.controls.actualWeight.invalid">
+                    <span *ngIf="animalForm.controls.actualWeight.errors.required">This field is mandatory.</span>
+                    <span *ngIf="animalForm.controls.actualWeight.errors.pattern">This field is invalid.</span>
+                </mat-error>
+            </mat-form-field>
 
-            <div fxLayout="row wrap">
-                <mat-form-field appearance="standard" fxFlex>
-                    <mat-label>Description</mat-label>
-                    <input matInput formControlName="description" required>
-                    <mat-error *ngIf="animalForm.controls.description.touched && animalForm.controls.description.invalid">
-                        <span *ngIf="animalForm.controls.description.errors.required">This field is mandatory.</span>
-                        <span *ngIf="animalForm.controls.description.errors.pattern">This field is invalid.</span>
-                    </mat-error>
-                </mat-form-field>
-            </div>
+            
+        </div>
+
+            
+            
         </div>
     </form>
 </mat-dialog-content>
