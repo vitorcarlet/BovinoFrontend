@@ -22,6 +22,7 @@ export class AnimalService {
 
       this.animals = requisicao;
       console.log(requisicao);
+      //console.log(requisicao);
     } catch (error) {
       console.error('Erro ao buscar animais:', error);
     }
@@ -48,6 +49,13 @@ export class AnimalService {
       "/animal/update",data,{
         headers:new HttpHeaders().set('Content-type',"application/json")
       });
+  }
+
+  add(animal:any){
+    var dataJson = animal;
+    return this.httpClient.post(this.url + "/animal/add", dataJson, {
+      headers: new HttpHeaders().set('Content-type','application/json')
+    });
   }
 
 }

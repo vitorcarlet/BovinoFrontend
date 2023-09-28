@@ -9,6 +9,8 @@ import { ConfirmationComponent } from '../dialog/confirmation/confirmation.compo
 import { AnimalService } from 'src/app/services/animal-service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/services/snackbar.service';
+import { UserService } from 'src/app/services/user.service';
+import { BovinoInfoService } from 'src/app/services/bovino-info.service';
 
 @Component({
   selector: 'app-animal-card',
@@ -28,7 +30,8 @@ export class AnimalCardComponent {
     private router:Router,
     private animalService:AnimalService,
     private ngxService:NgxUiLoaderService,
-    private snackbarService:SnackbarService){
+    private snackbarService:SnackbarService,
+    private bovinoInfo:BovinoInfoService){
 
   }
 
@@ -44,7 +47,7 @@ export class AnimalCardComponent {
       const diferencaMeses = differenceInMonths(dataAtual, dataNascimentoDate);
       const diferencaMesesString: string | undefined = diferencaMeses.toString();
   
-      console.log(`Idade em meses: ${diferencaMeses}`);
+      //console.log(`Idade em meses: ${diferencaMeses}`);
 
       return diferencaMesesString;
     }else{
@@ -54,19 +57,7 @@ export class AnimalCardComponent {
     // Converter a data fornecida em um objeto de data
     }
 
-    handleAddAction(){
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.data = {
-        action: 'Edit'
-      };
-      dialogConfig.width = "850px";
-      const dialogRef = this.dialog.open(DialogAnimalCardComponent,dialogConfig);
-      this.router.events.subscribe(()=>{
-        dialogRef.close();
   
-      });
-  
-    }
 
     handleDeleteAction(values:any){
       const dialogConfig = new MatDialogConfig();

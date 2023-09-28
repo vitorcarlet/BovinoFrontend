@@ -48,7 +48,7 @@ export class BovinoInfoService {
     }
   }
 
-  async  minhaFuncaoAsync() {
+  async getUserIdAsync() {
     const resultado = await this.getUserId();
     console.log(resultado)+"22222"; // Agora você terá acesso ao valor resolvido, que deve ser 7 ou outro valor que corresponda à resolução da sua Promise.
     return resultado;
@@ -56,12 +56,12 @@ export class BovinoInfoService {
   
 
   async getOxQuantity() {
-    const id = await this.minhaFuncaoAsync();
+    const id = await this.getUserIdAsync();
     console.log(id + "111111111");
     return this.httpClient.get(this.url + '/dashboard/count/' + id);
   }
   async getOxMediumWeight() {
-    const id = await this.minhaFuncaoAsync();
+    const id = await this.getUserIdAsync();
     return this.httpClient.get(this.url + '/dashboard/weight/' + id);
   }
 }

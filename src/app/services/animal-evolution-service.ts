@@ -13,12 +13,42 @@ export class AnimalEvolutionService {
 
   constructor(private httpClient: HttpClient) { }
 
+
+  addNewWeight(evolutionObj:any){
+    const dataJson = {  
+      "id": evolutionObj.animalId,
+      "weight": evolutionObj.weight,
+      "date": evolutionObj.date
+      
+  };
+    return this.httpClient.post(this.url +"/animal/addNewWeight",dataJson,{
+      headers: new HttpHeaders().set('Content-type','application/json')
+    });
+  }
+  
+
   getEvolutions(animalName:any){
-    return this.httpClient.get(this.url +  "/evolution/get/"+animalName);
+    return this.httpClient.get(this.url +"/evolution/get/"+animalName);
   }
 
-  //essa função ta ERRADASSA, SO COPIEI A ANTERIOR 
   delete(id: any) {
-    return this.httpClient.get(this.url +  "/evolution/get/"+id);
+    return this.httpClient.post(this.url +"/evolution/remove/"+id,null);
+  }
+
+  edit(evolutionObj:any){
+    let dataJson = evolutionObj;
+    return this.httpClient.post(this.url +"/evolution/edit",dataJson,{
+      headers: new HttpHeaders().set('Content-type','application/json')
+    });
+  }
+
+  add(evolutionObj:any){
+    let dataJson = evolutionObj;
+    return this.httpClient.post(this.url +"/animal/addNewWeight",dataJson,{
+      headers: new HttpHeaders().set('Content-type','application/json')
+    });
   }
 }
+
+
+

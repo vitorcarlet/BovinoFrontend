@@ -14,8 +14,8 @@ import { AnimalService } from 'src/app/services/animal-service';
 })
 export class DialogAnimalCardComponent implements OnInit {
 
-  onAddCategory = new EventEmitter();
-  onEditCategory = new EventEmitter();
+  onAddAnimal = new EventEmitter();
+  onEditAnimal = new EventEmitter();
   animalForm:any = FormGroup;
   dialogAction:any = "Add";
   action:any = "Add";
@@ -44,7 +44,10 @@ export class DialogAnimalCardComponent implements OnInit {
       this.dialogAction = "Edit";
       this.action = "Update";
       this.animalForm.patchValue(this.dialogData.data);
+    }else{
+      this.animalForm.patchValue(this.dialogData.data);
     }
+
   }
 
   handleSubmit(){
@@ -52,8 +55,44 @@ export class DialogAnimalCardComponent implements OnInit {
       this.dialogAction = "Edit"
       this.action = "Update";
       this.edit();
-
+    }else{
+      this.add();
     }
+  }
+
+  add() {
+    console.log(this.dialogData.data);
+    var userId = this.dialogData.data;
+    var formData = this.animalForm.value;
+    console.log(userId.id+"  "+formData.name+"  "+formData.race+"add do animalcard");
+    var data = {
+      name:formData.name,
+      race: formData.race,
+      birth: formData.birthday,
+      actualWeight: formData.actualWeight,
+      ownerId: String(userId)
+    };
+
+    this.animalService.add(data).subscribe(
+      (response: any) => {
+        this.dialogRef.close();
+        this.onAddAnimal.emit();
+        this.responseMessage = response.message;
+        this.snackbarService.openSnackBar(this.responseMessage, 'success');
+      },
+      (error) => {
+        console.log(error);
+        if (error.error?.message) {
+          this.responseMessage = error.error?.message;
+        } else {
+          this.responseMessage = GlobalConstants.genericError;
+        }
+        this.snackbarService.openSnackBar(
+          this.responseMessage,
+          GlobalConstants.error
+        );
+      }
+    );
   }
 
   edit(){

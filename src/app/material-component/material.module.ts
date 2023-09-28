@@ -58,7 +58,7 @@ import { AnimalEvolutionComponent } from './dialog/animal-evolution/animal-evolu
     DialogAnimalCardComponent,
     ManageAnimalEvolutionComponent,
     YouAreNotAllowedComponent,
-    AnimalEvolutionComponent
+    AnimalEvolutionComponent,
   ]
 })
 export class MaterialComponentsModule {}

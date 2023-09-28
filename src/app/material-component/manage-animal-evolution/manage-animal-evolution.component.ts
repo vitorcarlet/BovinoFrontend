@@ -61,10 +61,11 @@ export class ManageAnimalEvolutionComponent implements OnInit {
 
   }
 
-  handleAddAction(){
+  handleAddAction(values:any){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
-      action: 'Add'
+      action: 'Add',
+      data:values
     };
     dialogConfig.width = "850px";
     const dialogRef = this.dialog.open(AnimalEvolutionComponent,dialogConfig);
@@ -73,9 +74,9 @@ export class ManageAnimalEvolutionComponent implements OnInit {
 
     });
 
-    // const sub = dialogRef.componentInstance.onAddEvolution.subscribe((response)=>{
-    //   this.getAllEvolutions();
-    // })
+    const sub = dialogRef.componentInstance.onAddEvolution.subscribe((response)=>{
+      this.getAllEvolutions();
+    })
   }
 
   handleEditAction(values:any){
@@ -91,14 +92,14 @@ export class ManageAnimalEvolutionComponent implements OnInit {
 
     });
 
-    // const sub = dialogRef.componentInstance.onEditEvolution.subscribe((response)=>{
-    //   this.getAllEvolutions();
-    // })
+    const sub = dialogRef.componentInstance.onEditEvolution.subscribe((response)=>{
+      this.getAllEvolutions();
+    })
   }
   handleDeleteAction(values:any){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
-      message: 'delete '+values.name+' product',
+      message: 'delete this evolution?',
       confirmation:true
     }
     const dialogRef = this.dialog.open(ConfirmationComponent,dialogConfig);

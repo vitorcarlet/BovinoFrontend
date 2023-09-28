@@ -5,7 +5,7 @@
     <p>peso: {{animal.actualWeight}}</p>
     <p>idade:  meses.</p>
     <div class="button-container">
-        <button  mat-flat-button color="primary" class="button-icon button-text" onclick="handleAddAction()" >
+        <button  mat-flat-button color="primary" class="button-icon button-text" (click)="handleAddAction(animal)">
             <mat-icon>add</mat-icon> Adicionar Evolução
         </button> 
         

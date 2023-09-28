@@ -1,1 +1,55 @@
-<p>animal-evolution works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span>{{dialogData.action}} Evolução</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typograph">
+    <form [formGroup]="evolutionForm">
+        <div fxFlex fxLayout="column">
+           
+
+            <div fxLayout="row wrap">
+
+            
+                    <mat-form-field appearance="standard" fxFlex>
+                        <mat-label>RegistryDate</mat-label>
+                        <input matInput formControlName="registryDateString" required>
+                        <mat-error *ngIf="evolutionForm.controls.registryDateString.touched && evolutionForm.controls.registryDateString.invalid">
+                            <span *ngIf="evolutionForm.controls.registryDateString.errors.required">This field is mandatory.</span>
+                            <span *ngIf="evolutionForm.controls.registryDateString.errors.pattern">This field is invalid.</span>
+                        </mat-error>
+                    </mat-form-field>
+                
+                
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>Weight</mat-label>
+                    <input matInput formControlName="weight" required>
+                    <mat-error *ngIf="evolutionForm.controls.weight.touched && evolutionForm.controls.weight.invalid">
+                        <span *ngIf="evolutionForm.controls.weight.errors.required">This field is mandatory.</span>
+                        <span *ngIf="evolutionForm.controls.weight.errors.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                
+            </div>
+
+          
+            
+            
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(evolutionForm.valid && evolutionForm.dirty)">
+        <mat-icon>save</mat-icon>{{action}}
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>
+        <mat-icon>cancel</mat-icon> Close
+    </button>
+</mat-dialog-actions>
