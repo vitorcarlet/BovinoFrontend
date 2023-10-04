@@ -53,7 +53,7 @@ export class RouteGuardService {
         GlobalConstants.unauthorized,
         GlobalConstants.error
       );
-      this.router.navigate(['/cafe/dashboard']);
+      this.router.navigate(['/bovino/dashboard']);
       return false;
     } else {
       this.router.navigate(['/']);

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, Component  } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BovinoInfoService } from 'src/app/services/bovino-info.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -12,12 +12,13 @@ import { map } from 'rxjs/operators';
   templateUrl: './manage-ox-dashboard.component.html',
   styleUrls: ['./manage-ox-dashboard.component.scss']
 })
-export class ManageOxDashboardComponent implements OnInit {
+export class ManageOxDashboardComponent implements AfterViewInit {
 responseMessage: any;
 dataOxQuantity:any;
 dataOxWeight:any;
 getIdForm:any = FormGroup;
   
+
 
   constructor(
     private formBuilder:FormBuilder,
@@ -25,14 +26,15 @@ getIdForm:any = FormGroup;
     private ngxService: NgxUiLoaderService,
     private snackBarService: SnackbarService
   ) {
-    
-   }
-
-  ngOnInit(): void {
     this.ngxService.start();
     this.getOxQuantity();
     this.getOxMediumWeight();
+   }
+  ngAfterViewInit(): void {
+  
   }
+
+
 
   /*async getOxQuantity() {
     try {

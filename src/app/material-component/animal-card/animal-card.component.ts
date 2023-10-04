@@ -108,7 +108,7 @@ export class AnimalCardComponent {
     }
 
     handleEvolutionAction(animalObj: any) {
-      this.router.navigate(['/cafe/animalEvolution'], {
+      this.router.navigate(['/bovino/animalEvolution'], {
         queryParams: { animalData: JSON.stringify(animalObj) }
       });
     }

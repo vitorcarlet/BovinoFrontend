@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { GlobalConstants } from 'src/app/shared/global-constants';
-import { CategoryComponent } from '../category/category.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CategoryService } from 'src/app/services/category.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { AnimalService } from 'src/app/services/animal-service';
+import { AnimalComponent } from '../animal/animal.component';
 
 @Component({
   selector: 'app-dialog-animal-card',
@@ -25,8 +24,7 @@ export class DialogAnimalCardComponent implements OnInit {
   constructor(
   @Inject(MAT_DIALOG_DATA) public dialogData: any,
   private formBuilder:FormBuilder,
-  private categoryService:CategoryService,
-  public dialogRef: MatDialogRef<CategoryComponent>,
+  public dialogRef: MatDialogRef<AnimalComponent>,
   private snackbarService:SnackbarService,
   private animalService:AnimalService
   ) { }

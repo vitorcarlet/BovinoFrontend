@@ -3,16 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FullComponent } from './layouts/full/full.component';
 import { RouteGuardService } from './services/route-guard.service';
+import { DashboardModule } from './material-component/manage-ox-dashboard/dashboard.module';
 
 const routes: Routes = [
+  //dashboard = DashboardModule
   { path: '', component: HomeComponent },
   {
-    path: 'cafe',
+    path: 'bovino',
     component: FullComponent,
     children: [
       {
         path: '',
-        redirectTo: '/cafe/dashboard',
+        redirectTo: '/bovino/dashboard',
         pathMatch: 'full',
       },
       {
@@ -29,7 +31,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+          import('./material-component/manage-ox-dashboard/manage-ox-dashboard.component').then((m) => m.ManageOxDashboardComponent),
         canActivate: [RouteGuardService],
         data: {
           expectedRole: ['admin', 'user'],
