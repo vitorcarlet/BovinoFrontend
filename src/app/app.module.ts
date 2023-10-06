@@ -56,7 +56,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     InitialBovinoComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -68,8 +67,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     CommonModule,
     MatDialogModule,
-    BrowserAnimationsModule,
-
   ],
   providers: [
     HttpClientModule,

@@ -34,8 +34,6 @@ import { OxWeightChartComponent } from './ox-weight-chart/ox-weight-chart.compon
     ReactiveFormsModule,
     FlexLayoutModule,
     CdkTableModule,
-    ChartModule,
-    BrowserModule
   ],
   providers: [],
   declarations: [

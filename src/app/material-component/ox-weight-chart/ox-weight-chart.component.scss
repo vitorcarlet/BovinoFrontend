@@ -16,3 +16,23 @@
     flex: 1;
     box-shadow: 10px 10px 5px #aaaaaa;
 }
+
+
+
+.container {
+    display: grid;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 500px));
+    gap: 20px;
+    place-content: center;
+    margin-top: 30px;
+}
+
+
+
+
+
+/*& > * {
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}*/

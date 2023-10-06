@@ -19,7 +19,6 @@ import { ChartModule } from 'angular-highcharts';
     MaterialModule,
     FlexLayoutModule,
     RouterModule.forChild(DashboardRoutes),
-    BrowserModule,
     ChartModule
   ],
   declarations: [ManageOxDashboardComponent,OxWeightChartComponent]
