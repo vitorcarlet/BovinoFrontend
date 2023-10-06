@@ -26,6 +26,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 import { InitialBovinoComponent } from './initial-bovino/initial-bovino.component';
+import { OxWeightChartComponent } from './material-component/ox-weight-chart/ox-weight-chart.component';
+
+
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -53,7 +56,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     InitialBovinoComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,

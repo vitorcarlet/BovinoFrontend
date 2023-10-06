@@ -6,16 +6,21 @@ import { DashboardRoutes } from './dashboard.routing';
 import { ManageOxDashboardComponent } from './manage-ox-dashboard.component';
 import { MaterialModule } from 'src/app/shared/material-module';
 import { MatCardModule } from '@angular/material/card';
+import { OxWeightChartComponent } from '../material-component/ox-weight-chart/ox-weight-chart.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChartModule } from 'angular-highcharts';
 
 
 @NgModule({
+  
   imports: [
     MatCardModule,
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    RouterModule.forChild(DashboardRoutes)
+    RouterModule.forChild(DashboardRoutes),
+    ChartModule
   ],
-  declarations: [ManageOxDashboardComponent]
+  declarations: [ManageOxDashboardComponent,OxWeightChartComponent]
 })
 export class DashboardModule { }

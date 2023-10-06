@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import '/src/assets/styles/highcharts.scss';
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -45,4 +47,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .spacer {
   flex: 1 auto;
+}
+
+#gradient-0 stop {
+  stop-color: #19af46;
+}
+
+#gradient-0 stop[offset="0"]{
+  stop-opacity: 0.25;
+}
+
+#gradient-0 stop[offset="1"]{
+  stop-opacity: 0;
+}
+
+.highcharts-color-0{
+  fill:#19af46;
+  stroke: #19af46;
+}
+
+.highcharts-color-0 .highcharts-area{
+  fill-opacity: 1;
+  fill: url(#gradient-0);
 }
