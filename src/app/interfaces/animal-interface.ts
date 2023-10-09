@@ -1,8 +1,8 @@
 export interface Animal {
-    id: number;
+   id: number;
     name: string;
     race: string;
-    birthday: string;
+    birth: string;
     actualWeight: number;
-    ownerIdId: number;
+    ownerIdId: number ;
   }

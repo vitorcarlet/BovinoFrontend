@@ -5,6 +5,7 @@
   </button>
 </mat-card>
 
+<!--
 <hr>
   <mat-card>
       <mat-form-field appearance="standard">
@@ -13,16 +14,39 @@
       </mat-form-field>
   </mat-card>
   <hr>
-
+-->
 <div class="animal-list">
 
   
   
+   
     <app-animal-card
-      *ngFor="let animal of filteredAnimals; index as i"
+      *ngFor="let animal of filteredAnimals?.content; index as i"
       [animal]="animal"
       [numero]="i + 1"
     ></app-animal-card>
+
+    <!-- <app-animal-card
+      *ngFor="let page of filteredAnimals">
+        <ng-container *ngFor="let animal of page.content">
+          [animal]="animal"
+          [numero]="i + 1"
+        </ng-container>
+      </app-animal-card>
+    -->
       
     
   </div>
+
+  <!--<div class="animal-list">
+    <app-animal-card
+      *ngFor="let page of filteredAnimals; let i = index"
+      [numero]="i + 1"
+    >
+      <ng-container *ngFor="let animal of page.content">
+        [animal]="animal"
+      [numero]="i + 1"
+      </ng-container>
+    </app-animal-card>
+  </div>-->
+  

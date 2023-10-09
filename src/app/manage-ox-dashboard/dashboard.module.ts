@@ -10,6 +10,8 @@ import { OxWeightChartComponent } from '../material-component/ox-weight-chart/ox
 import { BrowserModule } from '@angular/platform-browser';
 import { ChartModule } from 'angular-highcharts';
 import { OxSexChartComponent } from './ox-sex-chart/ox-sex-chart.component';
+import { LastAnimalsAddedComponent } from './last-animals-added/last-animals-added.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -21,8 +23,9 @@ import { OxSexChartComponent } from './ox-sex-chart/ox-sex-chart.component';
     MaterialModule,
     FlexLayoutModule,
     RouterModule.forChild(DashboardRoutes),
-    ChartModule
+    ChartModule,
+    MatTableModule
   ],
-  declarations: [ManageOxDashboardComponent,OxWeightChartComponent, OxSexChartComponent]
+  declarations: [ManageOxDashboardComponent,OxWeightChartComponent, OxSexChartComponent, LastAnimalsAddedComponent]
 })
 export class DashboardModule { }
