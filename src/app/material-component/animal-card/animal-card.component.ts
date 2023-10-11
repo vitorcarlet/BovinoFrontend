@@ -11,6 +11,8 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { BovinoInfoService } from 'src/app/services/bovino-info.service';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { Page } from 'src/app/interfaces/page-interface';
 
 @Component({
   selector: 'app-animal-card',
@@ -24,7 +26,10 @@ export class AnimalCardComponent {
   @Input()
   numero: number | undefined;
 
+  
+
   responseMessage:any;
+
 
   constructor(private dialog:MatDialog,
     private router:Router,
@@ -37,24 +42,45 @@ export class AnimalCardComponent {
 
 
 
-  converterDataEmIdadeEmMeses() {
-    const dataNascimento = this.animal?.birthday;
-    if(dataNascimento){
-      const dataNascimentoDate = parseISO(dataNascimento);
+  // converterDataEmIdadeEmMeses() {
+  //   const dataNascimento = this.animal?.birth;
+  //   console.log('passou no animalCard'+this.animal?.birth);
+  //   if(dataNascimento){
+  //     const dataNascimentoDate = parseISO(dataNascimento);
 
-      // Calcular a diferença em meses entre a data de nascimento e a data atual
-      const dataAtual = new Date();
-      const diferencaMeses = differenceInMonths(dataAtual, dataNascimentoDate);
-      const diferencaMesesString: string | undefined = diferencaMeses.toString();
+  //     // Calcular a diferença em meses entre a data de nascimento e a data atual
+  //     const dataAtual = new Date();
+  //     const diferencaMeses = differenceInMonths(dataAtual, dataNascimentoDate);
+  //     const diferencaMesesString: string | undefined = diferencaMeses.toString();
   
-      //console.log(`Idade em meses: ${diferencaMeses}`);
+  //     //console.log(`Idade em meses: ${diferencaMeses}`);
 
-      return diferencaMesesString;
-    }else{
-      return GlobalConstants.genericError;
-    }
+  //     return diferencaMesesString;
+  //   }else{
+  //     return GlobalConstants.genericError;
+  //   }
 
-    // Converter a data fornecida em um objeto de data
+  //   // Converter a data fornecida em um objeto de data
+
+  //   return null;
+  //   }
+
+    converterDataEmIdadeEmMeses() {
+      const dataNascimento = this.animal?.birth;
+    
+      if (dataNascimento) {
+        // Converter a data de nascimento em milissegundos para um objeto Date
+        const dataNascimentoDate = new Date(dataNascimento);
+    
+        // Calcular a diferença em meses entre a data de nascimento e a data atual
+        const dataAtual = new Date();
+        const diferencaMeses = (dataAtual.getFullYear() - dataNascimentoDate.getFullYear()) * 12 + (dataAtual.getMonth() - dataNascimentoDate.getMonth());
+        const diferencaMesesString = diferencaMeses.toString();
+    
+        return diferencaMesesString;
+      } else {
+        return GlobalConstants.genericError;
+      }
     }
 
   
@@ -102,9 +128,7 @@ export class AnimalCardComponent {
       const dialogRef = this.dialog.open(DialogAnimalCardComponent,dialogConfig);
       this.router.events.subscribe(()=>{
         dialogRef.close();
-  
       });
-  
     }
 
     handleEvolutionAction(animalObj: any) {

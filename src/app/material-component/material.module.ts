@@ -19,9 +19,8 @@ import { DialogAnimalCardComponent } from './dialog/dialog-animal-card/dialog-an
 import { ManageAnimalEvolutionComponent } from './manage-animal-evolution/manage-animal-evolution.component';
 import { YouAreNotAllowedComponent } from './you-are-not-allowed/you-are-not-allowed.component';
 import { AnimalEvolutionComponent } from './dialog/animal-evolution/animal-evolution.component';
-import { ChartModule } from 'angular-highcharts';
-import { BrowserModule } from '@angular/platform-browser';
-import { OxWeightChartComponent } from './ox-weight-chart/ox-weight-chart.component';
+
+
 
 
 @NgModule({
@@ -47,7 +46,6 @@ import { OxWeightChartComponent } from './ox-weight-chart/ox-weight-chart.compon
     ManageAnimalEvolutionComponent,
     YouAreNotAllowedComponent,
     AnimalEvolutionComponent,
-    
   ]
 })
 export class MaterialComponentsModule {}

@@ -1,0 +1,8 @@
+.chart-container {
+    display: grid;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 500px));
+    gap: 20px;
+    place-content: center;
+    margin-top: 30px;
+}
