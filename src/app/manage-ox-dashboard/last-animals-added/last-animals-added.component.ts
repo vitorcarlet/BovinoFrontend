@@ -43,6 +43,24 @@ export class LastAnimalsAddedComponent implements OnInit {
       console.error(error);
     }
   }
+
+  converterDataEmIdadeEmMeses(birth:any) {
+    const dataNascimento = birth;
+  
+    if (dataNascimento) {
+      // Converter a data de nascimento em milissegundos para um objeto Date
+      const dataNascimentoDate = new Date(dataNascimento);
+  
+      // Calcular a diferença em meses entre a data de nascimento e a data atual
+      const dataAtual = new Date();
+      const diferencaMeses = (dataAtual.getFullYear() - dataNascimentoDate.getFullYear()) * 12 + (dataAtual.getMonth() - dataNascimentoDate.getMonth());
+      const diferencaMesesString = diferencaMeses.toString();
+  
+      return diferencaMesesString;
+    } else {
+      return GlobalConstants.genericError;
+    }
+  }
   
 
 }

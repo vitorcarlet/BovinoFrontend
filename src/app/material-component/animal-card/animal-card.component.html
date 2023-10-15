@@ -1,9 +1,10 @@
 <div class="animal-card">
     <img src="../../../assets/img/boi.png">
-    <p>nome/id: {{animal?.name}}</p>
-    <p>raça: {{animal?.race}}</p>
-    <p>peso: {{animal?.actualWeight}}</p>
-    <p>idade: {{converterDataEmIdadeEmMeses()}} meses.</p>
+    <p>Nome/id: {{animal?.name}}</p>
+    <p>Raça: {{animal?.race}}</p>
+    <p>Peso: {{animal?.actualWeight}}</p>
+    <p>Idade: {{converterDataEmIdadeEmMeses()}} meses.</p>
+    <p>Valor Médio: R${{getPrice()}} </p>
     <div class="button-container">
         <button  mat-flat-button color="warn" class="button-icon button-text" (click)="handleDeleteAction(animal)">
             <mat-icon>remove</mat-icon> Deletar 

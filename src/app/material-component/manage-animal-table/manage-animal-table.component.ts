@@ -9,6 +9,7 @@ import { BovinoInfoService } from 'src/app/services/bovino-info.service';
 import { Page } from 'src/app/interfaces/page-interface';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import parse from 'node-html-parser';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class ManageAnimalTableComponent implements OnInit {
   allAnimalsLoaded: boolean = false;
   filterValue: string = '';
   filteredAnimals:Page | undefined ;
+  price:any | undefined
+  
 
   
   
@@ -34,12 +37,25 @@ export class ManageAnimalTableComponent implements OnInit {
   ) {
     
     this.ngxService.start();
+    this.getPrice();
     this.loadAnimals();
     
   }
 
   ngOnInit(): void {
     
+  }
+
+
+  async getPrice(){
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const response = await fetch(proxyUrl+ 'https://www.melhorcambio.com/boi-hoje');
+    const text = await response.text();
+    const terms = parse(text);
+    const comercial = terms.querySelector('#comercial');
+    const price = comercial.attributes.value;
+    const parsedPrice = parseInt(price, 10);
+    this.price = parsedPrice;
   }
 
   handleAddAction(){
