@@ -22,6 +22,7 @@
    
     <app-animal-card
       *ngFor="let animal of filteredAnimals?.content; index as i"
+      [price]="price"
       [animal]="animal"
       [numero]="i + 1"
     ></app-animal-card>

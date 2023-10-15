@@ -6,6 +6,10 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+
 
 @Component({
   selector: 'app-manage-ox-dashboard',
@@ -17,6 +21,10 @@ responseMessage: any;
 dataOxQuantity:any;
 dataOxWeight:any;
 getIdForm:any = FormGroup;
+htmlTerms:string | undefined;
+priceResponse:any;
+apiUrl = environment.oxPriceApi;
+ 
   
 
 
@@ -24,11 +32,14 @@ getIdForm:any = FormGroup;
     private formBuilder:FormBuilder,
     private oxDashboardService: BovinoInfoService,
     private ngxService: NgxUiLoaderService,
-    private snackBarService: SnackbarService
+    private snackBarService: SnackbarService,
+    private httpClient:HttpClient,
+
   ) {
     this.ngxService.start();
     this.getOxQuantity();
     this.getOxMediumWeight();
+  
    }
   ngAfterViewInit(): void {
   
@@ -36,23 +47,14 @@ getIdForm:any = FormGroup;
 
 
 
-  /*async getOxQuantity() {
-    try {
-      this.ngxService.start();
-      const response = await this.oxDashboardService.getOxQuantity();
-      this.dataOxQuantity = response;
-      this.ngxService.stop();
-    } catch (error:any) {
-      this.ngxService.stop();
-      console.log(error.error?.message);
-      if (error.error?.message) {
-        this.responseMessage = error.error?.message;
-      } else {
-        this.responseMessage = GlobalConstants.genericError;
-      }
-      this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
-    }
-  }*/
+  
+
+ 
+  
+ 
+  
+  
+
 
   async getOxQuantity() {
     try {

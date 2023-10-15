@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 import { BovinoInfoService } from 'src/app/services/bovino-info.service';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Page } from 'src/app/interfaces/page-interface';
+import parse from 'node-html-parser';
 
 @Component({
   selector: 'app-animal-card',
@@ -26,8 +27,12 @@ export class AnimalCardComponent {
   @Input()
   numero: number | undefined;
 
-  
+  @Input()
+  price: any | undefined;
 
+  animalPrice:number |undefined;
+
+  
   responseMessage:any;
 
 
@@ -37,7 +42,6 @@ export class AnimalCardComponent {
     private ngxService:NgxUiLoaderService,
     private snackbarService:SnackbarService,
     private bovinoInfo:BovinoInfoService){
-
   }
 
 
@@ -64,6 +68,21 @@ export class AnimalCardComponent {
 
   //   return null;
   //   }
+
+  getPrice(){
+    const peso = this.animal?.actualWeight;
+    const price = this.price;
+
+    if (peso !== undefined && this.price !== undefined) {
+
+      const precoAnimal = (+peso / 15) * +price;
+      const formattedPrecoAnimal = precoAnimal.toFixed(2);
+          return formattedPrecoAnimal;
+    } else {
+      return 'erro';
+    }
+  };
+  
 
     converterDataEmIdadeEmMeses() {
       const dataNascimento = this.animal?.birth;
