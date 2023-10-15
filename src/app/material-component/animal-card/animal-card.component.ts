@@ -76,7 +76,8 @@ export class AnimalCardComponent {
     if (peso !== undefined && this.price !== undefined) {
 
       const precoAnimal = (+peso / 15) * +price;
-      return precoAnimal;
+      const formattedPrecoAnimal = precoAnimal.toFixed(2);
+          return formattedPrecoAnimal;
     } else {
       return 'erro';
     }
