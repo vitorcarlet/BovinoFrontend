@@ -15,50 +15,62 @@ export class AnimalService {
   url = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) {
-    this.getAllAnimals();
+    //this.getAllAnimals();
   }
 
-  async runAnimals() {
-    try {
-      const requisicao = await this.httpClient
-        .get<any[]>(this.url + "/animal/get") // Defina o tipo genérico como any[] para a resposta ser um array
-        .toPromise();
+  // async runAnimals() {
+  //   try {
+  //     const requisicao = await this.httpClient
+  //       .get<any[]>(this.url + "/animal/get") // Defina o tipo genérico como any[] para a resposta ser um array
+  //       .toPromise();
 
-      this.animals = requisicao;
-      console.log(requisicao);
-      //console.log(requisicao);
-    } catch (error) {
-      console.error('Erro ao buscar animais:', error);
-    }
-  }
-
-  // async getAllAnimals(){
-  //   try{
-  //      this.httpClient.get<any>(this.url+"/animal/get").subscribe((response) =>{
-  //       console.log(response);
-  //       this.page = response;
-  //     })
-  //   } catch(error) {
-  //     console.error('Erro ao buscar os animais', error);
+  //     this.animals = requisicao;
+  //     console.log(requisicao);
+  //     //console.log(requisicao);
+  //   } catch (error) {
+  //     console.error('Erro ao buscar animais:', error);
   //   }
-    
   // }
 
-  async getAllAnimals(page = 1, size = 10) {
-    try {
-      const uri = `${this.url}/animal/get?page=${page}&size=${size}`;
-      
-      this.httpClient.get<any>(uri).subscribe((response) => {
-        console.log(response);
-        this.page = response;
-      });
-    } catch (error) {
-      console.error('Erro ao buscar os animais', error);
-    }
+  getAllAnimals(page: number, size: number, name: string): Observable<Page> {
+    const uri = `${this.url}/animal/get?page=${page}&size=${size}&name=${name}`;
+    return this.httpClient.get<Page>(uri);
   }
 
-  // getAnimals$ = (page: number = 0, size: number = 10): Observable<any> => 
-  // this.httpClient.get<any>(`${this.url}/animal/get?page=${page}&size=${size}`);
+  getAllAnimalsWithoutName(page: number, size: number): Observable<Page> {
+    const uri = `${this.url}/animal/get?page=${page}&size=${size}`;
+    return this.httpClient.get<Page>(uri);
+  }
+
+  //  getAllAnimals(page:number, size:number, name:string) {
+  //   try {
+  //     const uri = `${this.url}/animal/get?page=${page}&size=${size}&name=${name}`;
+      
+  //     this.httpClient.get<Page>(uri).subscribe((response) => {
+  //       console.log(response);
+  //       this.page = response;
+  //       return response;
+  //     });
+  //   } catch (error) {
+  //     console.error('Erro ao buscar os animais', error);
+  //   }
+  // }
+
+  //  getAllAnimals2(page:number, size:number) {
+  //   try {
+  //     const uri = `${this.url}/animal/get?page=${page}&size=${size}`;
+      
+  //     this.httpClient.get<Page>(uri).subscribe((response) => {
+  //       console.log(response);
+  //       this.page = response;
+  //     });
+  //   } catch (error) {
+  //     console.error('Erro ao buscar os animais', error);
+  //   }
+  // }
+
+
+  
 
   async deleteAnimal(animal:any){
     const dataJson = {  
@@ -66,7 +78,7 @@ export class AnimalService {
       "race": animal.race,
       "birth": animal.birth,
       "actualWeight": animal.actualWeight,
-      "ownerId": animal.ownerId
+      "ownerId": animal.ownerId.id
   };
 
   console.log(dataJson);

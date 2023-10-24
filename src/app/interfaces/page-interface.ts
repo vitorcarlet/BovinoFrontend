@@ -16,7 +16,7 @@ export interface Page {
   };
   last: boolean;
   totalElements: number;
-  totalPages: number;
+  totalPages: number ;
   size: number;
   number: number;
   sort: {

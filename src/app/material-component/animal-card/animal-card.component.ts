@@ -15,6 +15,7 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Page } from 'src/app/interfaces/page-interface';
 import parse from 'node-html-parser';
 
+
 @Component({
   selector: 'app-animal-card',
   templateUrl: './animal-card.component.html',
