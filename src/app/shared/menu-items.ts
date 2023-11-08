@@ -28,12 +28,19 @@ const MENUITEMS = [
 
 
   {
+    state: 'report',
+    name: 'Generate Report',
+    type: 'link',
+    icon: 'assignment',
+    role: '',
+  },
+  {
     state: 'user',
     name: 'Manage User',
     type: 'link',
     icon: 'people',
     role: 'admin',
-  },
+  }
   
 ];
 
