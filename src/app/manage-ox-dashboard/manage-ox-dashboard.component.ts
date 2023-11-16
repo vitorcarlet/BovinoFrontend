@@ -46,11 +46,6 @@ apiUrl = environment.oxPriceApi;
   }
 
 
-
-  
-
- 
-  
  
   
   
@@ -68,7 +63,7 @@ apiUrl = environment.oxPriceApi;
         })
       ).subscribe((result: string) => {
         // 'result' é a string resultante após a transformação
-        console.log(result); // Faça algo com a string resultante
+        //console.log(result); // Faça algo com a string resultante
         this.dataOxQuantity = result;
       });
      
