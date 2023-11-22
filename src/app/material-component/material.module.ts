@@ -19,6 +19,7 @@ import { DialogAnimalCardComponent } from './dialog/dialog-animal-card/dialog-an
 import { ManageAnimalEvolutionComponent } from './manage-animal-evolution/manage-animal-evolution.component';
 import { YouAreNotAllowedComponent } from './you-are-not-allowed/you-are-not-allowed.component';
 import { AnimalEvolutionComponent } from './dialog/animal-evolution/animal-evolution.component';
+import { AnimalReportComponent } from './animal-report/animal-report.component';
 
 
 
@@ -46,6 +47,7 @@ import { AnimalEvolutionComponent } from './dialog/animal-evolution/animal-evolu
     ManageAnimalEvolutionComponent,
     YouAreNotAllowedComponent,
     AnimalEvolutionComponent,
+    AnimalReportComponent,
   ]
 })
 export class MaterialComponentsModule {}

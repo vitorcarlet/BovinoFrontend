@@ -42,11 +42,11 @@
 
             
                 <mat-form-field appearance="standard" fxFlex>
-                    <mat-label>Birthday</mat-label>
-                    <input matInput formControlName="birthday" required>
-                    <mat-error *ngIf="animalForm.controls.birthday.touched && animalForm.controls.birthday.invalid">
-                        <span *ngIf="animalForm.controls.birthday.errors.required">This field is mandatory.</span>
-                        <span *ngIf="animalForm.controls.birthday.errors.pattern">This field is invalid.</span>
+                    <mat-label>Birthday(AAAA-MM-DD)</mat-label>
+                    <input matInput formControlName="birth">
+                    <mat-error *ngIf="animalForm.controls.birth.touched && animalForm.controls.birth.invalid">
+                        <span *ngIf="animalForm.controls.birth.errors.required">This field is mandatory.</span>
+                        <span *ngIf="animalForm.controls.birth.errors.pattern">This field is invalid.</span>
                     </mat-error>
                 </mat-form-field>
             

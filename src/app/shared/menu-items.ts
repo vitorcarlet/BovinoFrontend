@@ -6,6 +6,7 @@ export interface Menu {
   type: string;
   icon: string;
   role: string;
+  disabled?: boolean; // Nova propriedade
 }
 
 const MENUITEMS = [
@@ -22,13 +23,16 @@ const MENUITEMS = [
     type: 'link',
     icon: 'pets',
     role: '',
+    
   },
+
+
   {
-    state:'animalEvolution',
-    name: 'Manage Animal Evolution',
+    state: 'report',
+    name: 'Generate Report',
     type: 'link',
-    icon: 'pets',
-    role: ''
+    icon: 'assignment',
+    role: '',
   },
 
   {
@@ -37,7 +41,7 @@ const MENUITEMS = [
     type: 'link',
     icon: 'people',
     role: 'admin',
-  },
+  }
   
 ];
 

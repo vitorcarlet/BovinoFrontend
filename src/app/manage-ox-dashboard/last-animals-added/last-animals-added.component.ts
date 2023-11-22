@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Page } from 'src/app/interfaces/page-interface';
 import { AnimalService } from 'src/app/services/animal-service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
@@ -13,6 +14,9 @@ export class LastAnimalsAddedComponent implements OnInit {
   dataSource:any;
   responseMessage:any;
   error:any;
+  page:Page;
+  currentPage: number = 0; // Página atual
+
 
   constructor(private animalService:AnimalService) { 
     
@@ -35,14 +39,22 @@ export class LastAnimalsAddedComponent implements OnInit {
   //   })
   // }
 
-  async tableData() {
+  tableData() {
     try {
-      const response = await this.animalService.getAllAnimals(1, 5);
-      this.dataSource = new MatTableDataSource(this.animalService.page?.content);
+      const response = this.animalService.getAllAnimalsWithoutName(0, 5).subscribe((response: Page) => {
+        console.log(response);
+        this.page = response;
+        this.dataSource = new MatTableDataSource(this.page?.content);
+      }, (error) => {
+        console.error('Erro ao buscar os animais', error);
+      });
     } catch (error) {
       console.error(error);
     }
   }
+
+  
+  
 
   converterDataEmIdadeEmMeses(birth:any) {
     const dataNascimento = birth;

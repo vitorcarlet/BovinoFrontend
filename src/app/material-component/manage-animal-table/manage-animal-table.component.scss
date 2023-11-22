@@ -17,6 +17,88 @@
     padding:20px;
 }
 
+.search-input {
+  background-color: #2e7d32; /* Define o fundo na cor desejada */
+  color: white; /* Define a cor do texto para branco ou outra cor que você preferir */
+  border: none; /* Remove a borda padrão do campo de entrada */
+  padding: 10px; /* Adicione preenchimento para melhorar a aparência */
+  border-radius: 5px; /* Arredonde as bordas do campo de entrada */
+  margin-left: 10px;
+}
+
+/* Adicione estilos CSS para realçar o campo de pesquisa quando ele estiver focado */
+.search-input:focus {
+  outline: none; /* Remova a borda de foco padrão */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adicione uma sombra suave quando o campo está focado */
+}
+
+/* No seu arquivo de estilo CSS ou SCSS */
+
+/* Estilize o botão "Previous" */
+.page-item:nth-child(1):not(.disabled) .page-link {
+  background-color: #2e7d32;
+  color: white;
+  border: 1px solid #2e7d32;
+  border-radius: 3px;
+  padding: 5px 10px;
+  transition: margin 0.2s; /* Adicione uma transição suave */
+}
+
+/* Estilize os botões numéricos */
+.page-item:not(.disabled) .page-link {
+  background-color: #2e7d32;
+  color: white;
+  border: 1px solid #2e7d32;
+  border-radius: 3px;
+  padding: 5px 10px;
+  transition: margin 0.2s;
+}
+
+/* Estilize o botão "Next" */
+.page-item:nth-last-child(1):not(.disabled) .page-link {
+  background-color: #2e7d32;
+  color: white;
+  border: 1px solid #2e7d32;
+  border-radius: 3px;
+  padding: 5px 10px;
+  transition: margin 0.2s;
+}
+
+/* Estilize os botões quando estão desabilitados */
+.page-item.disabled .page-link {
+  background-color: #d3d3d3;
+  color: #777;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+/* Adicione estilos para realçar os botões quando estão focados */
+.page-item .page-link:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin: 1px; /* Adicione uma pequena margem quando o botão está em foco */
+}
+
+.page-item .focus {
+  background-color: #2e7d32;
+  color: white;
+  border: 1px solid #2e7d32;
+  border-radius: 3px;
+  padding: 5px 10px;
+  transition: margin 0.2s;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin: 1px; /* Adicione uma pequena margem quando o botão está em foco */
+}
+
+/* Adicione estilos para realçar os botões quando estão focados */
+.page-item .page-link:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  margin: 1px;
+}
+
   /*------------ For small screens------------*/
 
 @media only screen and (max-width: 1000px){

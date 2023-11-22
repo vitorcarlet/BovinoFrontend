@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { GlobalConstants } from 'src/app/shared/global-constants';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { AnimalService } from 'src/app/services/animal-service';
 import { AnimalComponent } from '../animal/animal.component';
+import {format} from 'date-fns'
+import { UserService } from 'src/app/services/user.service';
+import { BovinoInfoService } from 'src/app/services/bovino-info.service';
 
 @Component({
   selector: 'app-dialog-animal-card',
@@ -18,6 +21,7 @@ export class DialogAnimalCardComponent implements OnInit {
   animalForm:any = FormGroup;
   dialogAction:any = "Add";
   action:any = "Add";
+  userIdComponent:any;
   
 
   responseMessage:any;
@@ -26,26 +30,33 @@ export class DialogAnimalCardComponent implements OnInit {
   private formBuilder:FormBuilder,
   public dialogRef: MatDialogRef<AnimalComponent>,
   private snackbarService:SnackbarService,
-  private animalService:AnimalService
+  private animalService:AnimalService,
+  private bovinoInfoService:BovinoInfoService
   ) { }
 
   ngOnInit(): void {
+    this.obterOwnerId();
     this.animalForm = this.formBuilder.group({
       id: [''],
-      name:[null,[Validators.required]],
-        race: [null, [Validators.required]],
-        birthday: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      race: [null, [Validators.required]],
+      birth: [null, [Validators.required]],
       actualWeight: [null, [Validators.required]],
       ownerIdId: ['']
     });
+
     if (this.dialogData.action === 'Edit') {
       this.dialogAction = "Edit";
       this.action = "Update";
       this.animalForm.patchValue(this.dialogData.data);
-    }else{
+      // Realize a conversão aqui e defina o valor formatado no controle do formulário
+      this.unixTimestampToDateString(this.animalForm.controls.birth);
+    } else {
       this.animalForm.patchValue(this.dialogData.data);
+      // Realize a conversão aqui e defina o valor formatado no controle do formulário
+      this.unixTimestampToDateString(this.animalForm.controls.birth);
     }
-
+    
   }
 
   handleSubmit(){
@@ -66,7 +77,7 @@ export class DialogAnimalCardComponent implements OnInit {
     var data = {
       name:formData.name,
       race: formData.race,
-      birth: formData.birthday,
+      birth: formData.birth,
       actualWeight: formData.actualWeight,
       ownerId: String(userId)
     };
@@ -93,15 +104,41 @@ export class DialogAnimalCardComponent implements OnInit {
     );
   }
 
+  unixTimestampToDateString(control: AbstractControl) {
+    if (control.value) {
+      const unixTimestamp = control.value;
+      const date = new Date(unixTimestamp ); // Converta de segundos para milissegundos
+      const formattedDate = format(date, 'yyyy-MM-dd');
+      control.setValue(formattedDate);
+    }
+  }
+
+  async obterOwnerId() {
+    try {
+      const value = await this.bovinoInfoService.getUserIdAsync();
+      // O valor da Promise está disponível aqui
+      console.log(value);
+      this.userIdComponent = value;
+    } catch (error) {
+      // Trate erros, se houver
+      console.error(error);
+    }
+  }
+  
+  
+
   edit(){
     var formData = this.animalForm.value;
+    const getOwnerIdPromise = this.bovinoInfoService.getUserIdAsync();
+
+
     var data = {
       id: String(formData.id),
       name:formData.name,
       race: formData.race,
-      birth: formData.birthday,
+      birth: formData.birth,
       actualWeight: formData.actualWeight,
-      ownerId: String(formData.ownerIdId),
+      ownerId: String(this.userIdComponent),
     };
 
     console.log(data);

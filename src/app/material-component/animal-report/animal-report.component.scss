@@ -1,0 +1,33 @@
+.float-right{
+    float: right;
+}
+
+mat-card{
+    padding: 20px;
+}
+
+table{
+    width: 100%;
+}
+
+.centralized-button {
+    max-height: 50px;
+    width: 60%;
+    margin: 0 auto;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.centralized-button p {
+    padding-top: 13px;
+}
+
+.centralized-button:hover {
+    transform: scale(1.1);
+}
